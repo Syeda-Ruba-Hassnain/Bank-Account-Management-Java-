@@ -1,0 +1,98 @@
+public class BankAccount
+{
+ private static int nextAccountNumber = 10000;
+ private static double currentInterestRate = 0.05;
+ public static void setCurrentRate(double newRate)
+    {
+        currentInterestRate = newRate;
+    }
+ private int accountNumber;    
+ private double balance;    
+ private double rate; 
+
+public Account(double initialBalance)
+    {
+        accountNumber = nextAccountNumber++;
+        balance = initialBalance;
+        rate = currentInterestRate;
+    }
+ public int getAccountNumber()
+    {
+        return accountNumber;
+    }
+    public double getBalance()
+    {
+        return balance;
+    }
+    public double getRate()
+    {
+        return rate;
+    }
+    public double getCurrentRate()
+    {
+        return currentInterestRate;
+    }
+public void deposit(double amount)
+    {
+        balance += amount;
+    }
+public boolean withdraw(double amount)
+    {
+        if (amount > balance)   // refuse to let account be overdrawn
+            return false;
+        else
+        {
+            balance -= amount;
+            return true;
+        }
+    }
+ public void updateRate()
+    {
+        rate = currentInterestRate;
+    }
+   public void elapse(int numberOfDays)
+    {
+        for (int day = 1; day <= numberOfDays; ++day)
+        {
+            balance += balance*rate/12;
+        }
+    } 
+}
+
+public class SavingAccount extends BankAccount
+{
+   public boolean withdraw(double amount)
+   {
+       if (getbalance()>= amount+minAmount) 
+       {
+           super.withdraw(amount);
+           return true;
+        }
+        else return false;
+    }
+    private double minAmount;
+}
+
+
+
+
+private intnumberOfWithdrawals;
+public SavingsAccount ()
+{
+balance = 0;
+numberOfWithdrawals = 0;
+}
+public voidwithdraw (intamount)
+{
+if (numberOfWithdrawals > 4) 
+{
+throw newRuntimeException (If the withdrawls >4 a service charge of 1$ is charged);
+}
+else
+{
+balance = balance amount;
+numberOfWithdrawals++;
+}
+}
+public voidresetNumOfWithdrawals () {}
+}
